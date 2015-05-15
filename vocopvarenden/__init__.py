@@ -11,6 +11,6 @@ def main():
     search_response = download.search(today)
     year = 1640
     if year not in db:
-        list_response = download.list(year, search_response = search_response)
-        exportcsv_response = download.exportcsv(year, list_response = list_response)
+        download.list(year, search_response = search_response)
+        exportcsv_response = download.exportcsv(year, search_response = search_response)
         db[year] = exportcsv_response.text
