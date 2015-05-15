@@ -14,7 +14,8 @@ def viewstate(response):
     return inputs['__VIEWSTATE'], inputs['__VIEWSTATEGENERATOR']
 
 def exportcsv(response):
-    html = lxml.html.fromstring(response.text)
-    raw_head, *trs = (map(str, tr.xpath('td/text()')) for tr in html.xpath('//tr'))
-    head = [re.sub(r'[ .]', '_', text.strip()).lower() for text in raw_head]
-    return (dict(zip(head, tr)) for tr in trs)
+    html = lxml.html.fromstring(response.text.replace('&nbsp;', ' '))
+    raw_head, *trs = ((str(text).strip() for text in tr.xpath('td/text()')) for tr in html.xpath('//tr'))
+    head = [re.sub(r'[ .]', '_', text).lower() for text in raw_head]
+    for tr in trs:
+        yield dict(zip(head, tr))
