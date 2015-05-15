@@ -1,3 +1,6 @@
+Install
+
+    sudo pip3 install .
 
 Promising data sources
 
