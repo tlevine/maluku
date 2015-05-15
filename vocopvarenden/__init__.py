@@ -2,7 +2,7 @@ import datetime, csv, sys
 
 from . import download, parse
 
-FIELDNAMES = (
+FIELDNAMES = [
     'voornaam',
     'achternaam',
     'inv_nr',
@@ -20,7 +20,7 @@ FIELDNAMES = (
     'eindeplaats',
     'typepersoon',
     'opmerkingen',
-)
+]
 
 def main():
     w = csv.DictWriter(sys.stdout, fieldnames = FIELDNAMES)
@@ -34,4 +34,5 @@ def main():
         download.list(year, search_response = search_response)
         exportcsv_response = download.exportcsv(year, search_response = search_response)
 
-        w.writerow(parse.exportcsv(exportcsv_response))
+        for row in parse.exportcsv(exportcsv_response):
+            w.writerow(row)
