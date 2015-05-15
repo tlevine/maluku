@@ -2,16 +2,22 @@ Install
 
     sudo pip3 install .
 
-Promising data sources
+Imported data sources
 
-* http://www.worldstatesmen.org/India.htm
-* http://resources.huygens.knaw.nl/das/voyages
-* http://www.treasurenet.com/forums/shipwrecks/17237-list-all-653-dutch-voc-shipwrecks-1595-1800-a.html
 * http://vocopvarenden.nationaalarchief.nl/Search.aspx
 * https://web.archive.org/web/20070706162608/http://www.vocshipwrecks.nl/downloads/Dutch%20VOC%20Shipwrecks.xls
+* http://resources.huygens.knaw.nl/das/voyages
+  * http://resources.huygens.knaw.nl/das/voyages_with_opvarenden.csv
+
+Other promising data sources
+
+* https://en.wikipedia.org/wiki/List_of_Governors-General_of_the_Dutch_East_Indies
 
 Other references
 
+* http://www.worldstatesmen.org/India.htm
+* http://www.treasurenet.com/forums/shipwrecks/17237-list-all-653-dutch-voc-shipwrecks-1595-1800-a.html
+* https://dx.doi.org/10.1086%2F261615
 * https://en.wikipedia.org/wiki/Dutch_East_India_Company
 * https://en.wikipedia.org/wiki/Economic_history_of_the_Netherlands_%281500%E2%80%931815%29
 * http://www.unesco.org/new/en/communication-and-information/flagship-project-activities/memory-of-the-world/register/full-list-of-registered-heritage/registered-heritage-page-1/archives-of-the-dutch-east-india-company/
