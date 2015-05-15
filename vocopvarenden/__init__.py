@@ -3,23 +3,23 @@ import datetime, csv, sys
 from . import download, parse
 
 FIELDNAMES = (
-    'first_name',
-    'family_name',
+    'voornaam',
+    'achternaam',
     'inv_nr',
     'folio',
-    'year_departure',
-    'ship',
-    'name',
-    'origin',
-    'occupation',
-    'month_certificate',
-    'year_tenure_ended',
-    'month_tenure_ended',
-    'day_tenure_ended',
-    'reason_tenure_ended',
-    'place_tenure_ended',
-    'type_person',
-    'remarks',
+    'jaarvertrek',
+    'schip',
+    'naam',
+    'herkomst',
+    'beroep',
+    'maandbrief',
+    'eindejaar',
+    'eindemaand',
+    'eindedag',
+    'eindeomschrijving',
+    'eindeplaats',
+    'typepersoon',
+    'opmerkingen',
 )
 
 def main():

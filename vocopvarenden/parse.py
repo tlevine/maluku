@@ -15,7 +15,7 @@ def viewstate(response):
 
 def exportcsv(response):
     html = lxml.html.fromstring(response.text.replace('&nbsp;', ' '))
-    raw_head, *trs = ((str(text).strip() for text in tr.xpath('td/text()')) for tr in html.xpath('//tr'))
+    raw_head, *trs = ((str(text).strip(' .') for text in tr.xpath('td/text()')) for tr in html.xpath('//tr'))
     head = [re.sub(r'[ .]', '_', text).lower() for text in raw_head]
     for tr in trs:
         yield dict(zip(head, tr))
