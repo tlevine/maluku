@@ -1,7 +1,10 @@
 import requests
 from vlermv import cache
 
-from . import list, exportcsv, parse
+from . import (
+    list as _list, exportcsv as _exportcsv,
+    parse,
+)
 
 DIR = '~/.maluku/vocopvarenden'
 
@@ -15,6 +18,13 @@ def list(year, search_response = None):
     if not search_response:
         raise TypeError('You must pass a search_response.')
     viewstate, viewstategenerator = parse.viewstate(search_response)
-    return requests.post(list.url, headers = list.headers,
+    return requests.post(_list.url, headers = _list.headers,
                cookies = search_response.cookies
-               data = list.data(viewstate, viewstategenerator, year))
+               data = _list.data(viewstate, viewstategenerator, year))
+
+@cache(DIR, 'exportcsv')
+def exportcsv(year, list_response = None):
+    if not list_response:
+        raise TypeError('You must pass a list_response.')
+    return requests.get(_exportcsv.url, headers = headers,
+                        cookies = list_response.cookies)
