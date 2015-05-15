@@ -3,3 +3,6 @@ shipwrecks.xls:
 
 voyages.csv:
 	wget -O voyages.csv http://resources.huygens.knaw.nl/das/voyages_with_opvarenden.csv
+
+crew.csv:
+	vocopvarenden > crew.csv
