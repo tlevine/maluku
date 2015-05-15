@@ -1,3 +1,5 @@
+import re
+
 import lxml.html
 
 class forminputs:
@@ -10,3 +12,9 @@ def viewstate(response):
     html = lxml.html.fromstring(response.text)
     inputs = forminputs(html)
     return inputs['__VIEWSTATE'], inputs['__VIEWSTATEGENERATOR']
+
+def exportcsv(response):
+    html = lxml.html.fromstring(response.text)
+    raw_head, *trs = (map(str, tr.xpath('td/text()')) for tr in html.xpath('//tr'))
+    head = [re.sub(r'[ .]', '_', text.strip()).lower() for text in raw_head]
+    return (dict(zip(head, tr)) for tr in trs)
