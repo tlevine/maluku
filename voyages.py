@@ -9,6 +9,9 @@ STRANGE_TONNAGES = {
 
 def fix(row):
     fixed = dict(row)
+
+    fixed['Type of ship'] = row['Type of ship'].replace('?', '')
+
     if row['Tonnage'] in STRANGE_TONNAGES:
         fixed['Tonnage'] = STRANGE_TONNAGES[row['Tonnage']]
     else:
@@ -17,14 +20,17 @@ def fix(row):
         except ValueError:
             logger.warning('Could not parse "%s" as a tonnage' % row['Tonnage'])
             fixed['Tonnage'] = None
+
     return fixed
 
 with open('data/voyages.csv') as fp:
     header = next(csv.reader(fp))
-    w = csv.DictWriter(sys.stdout, fieldnames = header)
-
     fp.seek(0)
+
     r = csv.DictReader(fp)
 
+    w = csv.DictWriter(sys.stdout, fieldnames = header)
+    w.writeheader()
     for row in r:
+        break
         w.writerow(fix(row))
