@@ -1,6 +1,12 @@
-colClasses <- c('character', 'factor', 'factor', 'numeric', 'factor', 'numeric', 'factor',
-                'factor', 'character', 'factor', 'character', 'character', 'character',
-                'factor', 'factor', 'character', 'factor',
-                'numeric', 'numeric', 'numeric', 'numeric', 'numeric', 'factor')
-voyages <- read.csv('voyages.csv', colClasses = colClasses)
-
+voyages.raw <- read.csv('voyages.csv', stringsAsFactors = FALSE)
+voyages <- voyages.raw['Number']
+names(voyages) <- 'number'
+voyages$ship <- factor(voyages.raw$Name.of.ship)
+voyages$master <- factor(voyages.raw$Master)
+voyages$tonnage <- as.numeric(sapply(strsplit(voyages.raw$Tonnage, '/'),
+                                     function(x) if (length(x) > 0) x[length(x)] else NA))
+  $ Type.of.ship                       : chr  "" "pinas" "" "" ...
+   $ Built                              : chr  "1594" "1594" "1594" "1594" ...
+   $ Yard                               : chr  "Amsterdam" "Amsterdam" "Amsterdam" "Amsterdam" ...
+    $ Chamber                            : chr  "" "" "" "" ...
+    $ Date.of.departure                  : chr  "02-04-1595" "02-04-1595" "02-04-1595" "0
