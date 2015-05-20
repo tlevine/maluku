@@ -23,7 +23,7 @@ def fix(row):
 
     return fixed
 
-with open('data/voyages.csv') as fp:
+with open('sources/voyages.csv') as fp:
     header = next(csv.reader(fp))
     fp.seek(0)
 
@@ -32,5 +32,4 @@ with open('data/voyages.csv') as fp:
     w = csv.DictWriter(sys.stdout, fieldnames = header)
     w.writeheader()
     for row in r:
-        break
         w.writerow(fix(row))
